@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0e1726">
+  <title>PocketSmart AI — Plan smarter</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="/"><span class="brand-icon">P</span><span>PocketSmart <b>AI</b></span></a>
+  <span class="status"><i></i> Budget-aware assistant</span>
+</header>
+<main class="shell">
+  <section class="hero">
+    <div class="eyebrow">PLAN WITH PURPOSE</div>
+    <h1>Your budget. <span>Your priorities.</span><br>One smarter plan.</h1>
+    <p>Get practical budget splits and tailored ideas for your home, next event, or special occasion.</p>
+    <div class="trust-row"><span>✦ Personalized ideas</span><span>↗ Budget-first planning</span><span>◎ Optional image guidance</span></div>
+  </section>
+
+  <section class="planner-tabs" aria-label="Choose planner">
+    <button class="tab active" data-planner="home"><span>⌂</span><b>Home</b><small>Interior essentials</small></button>
+    <button class="tab" data-planner="party"><span>✧</span><b>Party</b><small>Plan an event</small></button>
+    <button class="tab" data-planner="jewelry"><span>◇</span><b>Jewelry</b><small>Find your match</small></button>
+  </section>
+
+  <section class="workspace">
+    <form id="planner-form" class="form-panel">
+      <div class="section-heading"><div><span class="step">01</span><h2 id="form-title">Home budget planner</h2></div><span class="required">* Required</span></div>
+      <label for="budget">What is your total budget? <em>*</em></label>
+      <div class="budget-row"><select id="currency" name="currency" aria-label="Currency"><option value="INR">₹ INR</option><option value="USD">$ USD</option><option value="GBP">£ GBP</option><option value="EUR">€ EUR</option></select><input id="budget" name="budget" type="number" min="1" max="100000000" step="1" placeholder="e.g. 25000" required></div>
+      <div class="quick-budgets"><button type="button" data-budget="10000">₹10,000</button><button type="button" data-budget="25000">₹25,000</button><button type="button" data-budget="50000">₹50,000</button></div>
+      <label for="location">City / location</label><input id="location" name="location" value="India" placeholder="e.g. Chennai, India">
+      <div id="dynamic-fields"></div>
+      <label for="preferences">Your preferences <span class="optional">Optional</span></label>
+      <textarea id="preferences" name="preferences" rows="3" placeholder="Tell us your style, must-haves, priorities, or anything else…"></textarea>
+      <div id="image-field" class="image-field hidden">
+        <label for="image">Outfit image <span class="optional">Optional · max 5 MB</span></label>
+        <input id="image" name="image" type="file" accept="image/png,image/jpeg,image/webp">
+        <small>Use JPG, PNG, or WEBP. The image is sent to Gemini only if your API key is configured.</small>
+      </div>
+      <button id="submit-btn" class="primary" type="submit"><span>Build my budget plan</span><span>↗</span></button>
+      <p class="privacy-note">Recommendations are guidance, not verified live listings. Confirm prices and terms before buying.</p>
+    </form>
+    <section class="results-panel" aria-live="polite">
+      <div class="section-heading"><div><span class="step">02</span><h2>Your smart plan</h2></div><span id="result-badge" class="result-badge">Ready when you are</span></div>
+      <div id="empty-state" class="empty-state"><div class="empty-illustration"><span>₹</span><i>✦</i><b>↗</b></div><h3>A plan that fits your life</h3><p>Choose a planner, enter your budget, and let PocketSmart organize your next steps.</p><div class="empty-mini"><span>01 <b>Understand your needs</b></span><span>02 <b>Split your budget</b></span><span>03 <b>Explore practical ideas</b></span></div></div>
+      <div id="results" class="results hidden"></div>
+    </section>
+  </section>
+  <footer><span>POCKETSMART AI</span><span>Spend thoughtfully. Plan confidently.</span></footer>
+</main>
+<script src="/static/app.js"></script>
+</body></html>
